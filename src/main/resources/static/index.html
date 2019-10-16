@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pdf在线预览</title>
+</head>
+<body>
+<input type="button" onclick="openPDF()" value="点我打开pdf预览"/>
+<script>
+    function openPDF(){
+        var url="/getPdf";
+        //引入的pdf.js文件夹的路径下的web/viewer.html 参数：后台流文件URL+teacherName=xxx
+        //注意路径问题 %3D是“=”号的转义，
+        window.open("./pdfjs/web/viewer.html?file="+ url + "?teacherName%3D陈大大");
+    }
+
+</script>
+</body>
+</html>
