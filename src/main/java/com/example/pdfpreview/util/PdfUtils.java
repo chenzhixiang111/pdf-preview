@@ -3,10 +3,12 @@ package com.example.pdfpreview.util;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPRow;
 import com.itextpdf.text.pdf.PdfPTable;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * pdf工具类
@@ -85,5 +87,30 @@ public class PdfUtils {
         //设置党员个内容水平居中
         result.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
         return result;
+    }
+
+    /**
+     * 创建一行单元格
+     * @param strings 单元格内容集合
+     * @param font 字体
+     * @return
+     */
+    public static PdfPCell[] createRowCells(List<String> strings, Font font) {
+        PdfPCell[] result = new PdfPCell[strings.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = createCell(strings.get(i), font);
+        }
+        return result;
+    }
+
+    /**
+     * 创建表的一行对象
+     * @param strings
+     * @param font
+     * @return
+     */
+    public static PdfPRow createTableRow(List<String> strings, Font font) {
+        PdfPCell[] rowCells = createRowCells(strings, font);
+        return new PdfPRow(rowCells);
     }
 }
